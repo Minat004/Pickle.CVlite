@@ -1,0 +1,12 @@
+<h2 class="my-2 text-center">Start build your CV</h2>
+<router-outlet></router-outlet>
+<form>
+  <div class="form-group row mt-2 justify-content-center">
+    <button *ngIf="false" type="button" class="btn btn-primary col-sm-1 mx-2">Back</button>
+    <button type="button"
+            class="btn btn-outline-primary col-sm-1"
+            [disabled]="false"
+            (click)="goToNext()"
+    >Next</button>
+  </div>
+</form>

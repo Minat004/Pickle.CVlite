@@ -10,7 +10,7 @@ const routes: Routes = [
     component: BuildCvComponent,
     children: [
       {
-        path: '',
+        path: 'personal-info',
         component: PersonalInfoComponent,
       },
       {

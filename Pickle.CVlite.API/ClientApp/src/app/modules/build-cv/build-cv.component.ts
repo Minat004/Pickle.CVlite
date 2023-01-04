@@ -10,7 +10,7 @@ import {StringHelper} from "../../helpers/string-helper";
 })
 export class BuildCvComponent implements OnInit{
   steps: string[] = []
-  isSelectedTemplate = true
+  isSelectedTemplate = false
   canBack = false
 
   constructor(private route: ActivatedRoute, private router: Router) {
@@ -24,13 +24,11 @@ export class BuildCvComponent implements OnInit{
   }
 
   goToNext(): void{
-    if (this.router.url === '/create-cv'){
+    if (this.router.url === '/build-cv'){
       this.isSelectedTemplate = true
-      this.canBack = false
+      this.canBack = true
       this.router.navigate([this.steps[0]], {relativeTo: this.route}).then()
     }else {
-      this.isSelectedTemplate = false
-      this.canBack = true
       const urlArray: string[] = StringHelper.splitForArray(this.router.url)
       const i: number = this.steps.indexOf(urlArray[urlArray.length - 1])
       if (i >= this.steps.length - 1) return
@@ -39,6 +37,14 @@ export class BuildCvComponent implements OnInit{
   }
 
   goToBack(): void{
-    this.router.navigate(['./'], {relativeTo: this.route}).then()
+    const urlArray: string[] = StringHelper.splitForArray(this.router.url)
+    const i: number = this.steps.indexOf(urlArray[urlArray.length - 1])
+    if (i === 0) {
+      this.isSelectedTemplate = false
+      this.canBack = false
+      this.router.navigate(['./'], {relativeTo: this.route}).then()
+      return
+    }
+    this.router.navigate([this.steps[i - 1]], {relativeTo: this.route}).then()
   }
 }

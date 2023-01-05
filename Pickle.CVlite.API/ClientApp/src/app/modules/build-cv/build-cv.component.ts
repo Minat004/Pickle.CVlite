@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, ParamMap} from "@angular/router";
 import {UserStep} from "../../models/create-steps";
 import {StringHelper} from "../../helpers/string-helper";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-build-cv',
@@ -12,14 +13,21 @@ export class BuildCvComponent implements OnInit{
   steps: string[] = []
   isSelectedTemplate = false
   canBack = false
+  name: Observable<string[]>
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(
+          private route: ActivatedRoute,
+          private router: Router
+          ) {}
 
   ngOnInit(): void {
     const userSteps = Object.values<string>(UserStep);
     userSteps.forEach((step) => {
       this.steps.push(step)
+    })
+
+    this.route.url.subscribe(value => {
+      console.log(value[0].path)
     })
   }
 

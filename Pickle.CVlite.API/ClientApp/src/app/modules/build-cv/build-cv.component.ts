@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, ParamMap} from "@angular/router";
-import {UserStep} from "../../models/create-steps";
 import {StringHelper} from "../../helpers/string-helper";
 import {filter, map, Observable} from "rxjs";
 import {BuildCvService} from "./services/build-cv.service";
+import { BuildCvStep } from 'src/app/models/build-cv.model';
 
 @Component({
   selector: 'app-build-cv',
@@ -11,7 +11,7 @@ import {BuildCvService} from "./services/build-cv.service";
   styleUrls: ['./build-cv.component.scss']
 })
 export class BuildCvComponent implements OnInit{
-  steps: any[] = []
+  steps: BuildCvStep[] = []
   isSelectedTemplate = false
   canBack = false
   names: string[] = []
@@ -24,47 +24,24 @@ export class BuildCvComponent implements OnInit{
 
   ngOnInit(): void {
 
-    const userSteps = Object.values<string>(UserStep);
-    userSteps.forEach((step) => {
-      this.steps.push(step)
-    })
-
-    this.buildCvService.getAllSteps()
-      .pipe(
-        map((step) => step.name)
-      )
+    this.buildCvService.getSteps()
+      .pipe(map((x: BuildCvStep) => x.name))
       .subscribe((x) => {
-      this.names.push(x)
-      console.log(this.names)
-    })
+        this.names.push(x)
+      })
+
+    console.log(this.names)
 
     this.route.url.subscribe(value => {
       console.log(value[0].path)
     })
   }
 
-  goToNext(): void{
-    if (this.router.url === '/build-cv'){
-      this.isSelectedTemplate = true
-      this.canBack = true
-      this.router.navigate([this.steps[0]], {relativeTo: this.route}).then()
-    }else {
-      const urlArray: string[] = StringHelper.splitForArray(this.router.url)
-      const i: number = this.steps.indexOf(urlArray[urlArray.length - 1])
-      if (i >= this.steps.length - 1) return
-      this.router.navigate([this.steps[i + 1]], {relativeTo: this.route}).then()
-    }
+  gotoNext(): void{
+
   }
 
-  goToBack(): void{
-    const urlArray: string[] = StringHelper.splitForArray(this.router.url)
-    const i: number = this.steps.indexOf(urlArray[urlArray.length - 1])
-    if (i === 0) {
-      this.isSelectedTemplate = false
-      this.canBack = false
-      this.router.navigate(['./'], {relativeTo: this.route}).then()
-      return
-    }
-    this.router.navigate([this.steps[i - 1]], {relativeTo: this.route}).then()
+  gotoBack(): void{
+
   }
 }

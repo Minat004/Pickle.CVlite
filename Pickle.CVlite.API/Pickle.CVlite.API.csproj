@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <Folder Include="ClientApp\src\app\modules" />
+      <Folder Include="ClientApp\src\app\modules\build-cv\services" />
     </ItemGroup>
 
 </Project>

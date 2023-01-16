@@ -8,6 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { BuildCvComponent } from './modules/build-cv/build-cv.component';
 import { BuildCvModule } from './modules/build-cv/build-cv.module';
 import { ErrorComponent } from './components/error/error.component';
+import { BuildCvService } from "./modules/build-cv/services/build-cv.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,8 +23,9 @@ import { ErrorComponent } from './components/error/error.component';
     BrowserModule,
     BuildCvModule,
     AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BuildCvService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, ParamMap} from "@angular/router";
 import {UserStep} from "../../models/create-steps";
 import {StringHelper} from "../../helpers/string-helper";
-import {filter, Observable} from "rxjs";
+import {filter, map, Observable} from "rxjs";
+import {BuildCvService} from "./services/build-cv.service";
 
 @Component({
   selector: 'app-build-cv',
@@ -10,14 +11,15 @@ import {filter, Observable} from "rxjs";
   styleUrls: ['./build-cv.component.scss']
 })
 export class BuildCvComponent implements OnInit{
-  steps: string[] = []
+  steps: any[] = []
   isSelectedTemplate = false
   canBack = false
-  names$: Observable<string[]>
+  names: string[] = []
 
   constructor(
           private route: ActivatedRoute,
-          private router: Router
+          private router: Router,
+          private buildCvService: BuildCvService
           ) {}
 
   ngOnInit(): void {
@@ -26,11 +28,15 @@ export class BuildCvComponent implements OnInit{
     userSteps.forEach((step) => {
       this.steps.push(step)
     })
-    this.names$ = new Observable<string[]>(observer => {
-      observer.next(userSteps)
-    })
 
-    this.names$.subscribe(console.log)
+    this.buildCvService.getAllSteps()
+      .pipe(
+        map((step) => step.name)
+      )
+      .subscribe((x) => {
+      this.names.push(x)
+      console.log(this.names)
+    })
 
     this.route.url.subscribe(value => {
       console.log(value[0].path)

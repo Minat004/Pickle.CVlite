@@ -11,10 +11,9 @@ import { STEPS } from './build-cv-steps';
   styleUrls: ['./build-cv.component.scss']
 })
 export class BuildCvComponent implements OnInit{
-  steps: BuildCvStep[] = []
+  steps: BuildCvStep[] = STEPS
   isSelectedTemplate = false
   canBack = false
-  names: string[] = []
   currentStep: BuildCvStep
 
   constructor(
@@ -24,25 +23,20 @@ export class BuildCvComponent implements OnInit{
           ) {}
 
   ngOnInit(): void {
-
-    this.steps = STEPS
-
-    this.buildCvService.getSteps()
-      .pipe(map((x: BuildCvStep) => x.name))
-      .subscribe((x) => this.names.push(x))
-
-    console.log(this.names)
-
     this.route.url.subscribe((value) => {
-      console.log(value[0].path)
+      console.log('path: ' + value[0].path)
       this.currentStep = this.buildCvService.getStepByName(value[0].path)
     })
 
+    console.log('current:')
     console.log(this.currentStep)
   }
 
   gotoNext(): void{
+    console.log('current:')
+    console.log(this.currentStep)
     this.router.navigate([this.steps[this.currentStep.id + 1].name], { relativeTo: this.route })
+    this.currentStep = this.steps[this.currentStep.id + 1]
     if (this.currentStep.name === this.steps[0].name) {
       this.isSelectedTemplate = false
       this.canBack = false
@@ -51,9 +45,12 @@ export class BuildCvComponent implements OnInit{
       this.isSelectedTemplate = true
       this.canBack = true
     }
+    console.log('current:')
+    console.log(this.currentStep)
   }
 
   gotoBack(): void{
-
+    this.router.navigate([this.steps[this.currentStep.id - 1].name], { relativeTo: this.route })
+    this.currentStep = this.steps[this.currentStep.id - 1]
   }
 }

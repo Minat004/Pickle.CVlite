@@ -1,21 +1,36 @@
 import { Injectable } from '@angular/core';
-import {Observable, from, of} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {BuildCvStep} from "../../../models/build-cv.model";
-import {STEPS} from "../build-cv-steps";
+import { Observable, from, filter } from "rxjs";
+import { BuildCvStep } from "../../../models/build-cv.model";
+import { STEPS } from "../build-cv-steps";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuildCvService {
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  getSteps(): Observable<BuildCvStep>{
+  getSteps(): Observable<BuildCvStep> {
     return from(STEPS)
   }
 
-  getStep(name: string): BuildCvStep{
-    return {id:0, name:'', title:''}
+  getStepByName(name: string): BuildCvStep {
+    let result!: BuildCvStep
+    
+    from(STEPS)
+    .pipe(filter((param) => param.name === name))
+    .subscribe((value) => result = value)
+
+    return result
+  }
+
+  getStepById(id: number): BuildCvStep {
+    let result!: BuildCvStep
+    
+    from(STEPS)
+    .pipe(filter((param) => param.id === id))
+    .subscribe((value) => result = value)
+
+    return result
   }
 }

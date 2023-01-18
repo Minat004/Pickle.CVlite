@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { map } from "rxjs";
+import { Observable, map } from "rxjs";
 import { BuildCvService } from "./services/build-cv.service";
 import { BuildCvStep } from 'src/app/models/build-cv.model';
 import { STEPS } from './build-cv-steps';
@@ -12,9 +12,8 @@ import { STEPS } from './build-cv-steps';
 })
 export class BuildCvComponent implements OnInit{
   steps: BuildCvStep[] = STEPS
-  isSelectedTemplate = false
-  canBack = false
-  currentStep: BuildCvStep
+  isFirstStep: boolean
+  canBack: boolean
 
   constructor(
           private route: ActivatedRoute,
@@ -24,33 +23,28 @@ export class BuildCvComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.url.subscribe((value) => {
-      console.log('path: ' + value[0].path)
-      this.currentStep = this.buildCvService.getStepByName(value[0].path)
+      console.log('path:')
+      console.log(value)
+      this.buildCvService.currentStep = this.buildCvService.getStepByName(value[0].path)
+      
+      this.isFirstStep = this.buildCvService.isFirstStep
+      this.canBack = this.buildCvService.canBack
     })
-
+   
     console.log('current:')
-    console.log(this.currentStep)
+    console.log(this.buildCvService.currentStep)
   }
 
   gotoNext(): void{
     console.log('current:')
-    console.log(this.currentStep)
-    this.router.navigate([this.steps[this.currentStep.id + 1].name], { relativeTo: this.route })
-    this.currentStep = this.steps[this.currentStep.id + 1]
-    if (this.currentStep.name === this.steps[0].name) {
-      this.isSelectedTemplate = false
-      this.canBack = false
-    }
-    else {
-      this.isSelectedTemplate = true
-      this.canBack = true
-    }
+    console.log(this.buildCvService.currentStep)
+    this.router.navigate([this.steps[this.buildCvService.currentStep.id + 1].name], { relativeTo: this.route })
+
     console.log('current:')
-    console.log(this.currentStep)
+    console.log(this.buildCvService.currentStep)
   }
 
   gotoBack(): void{
-    this.router.navigate([this.steps[this.currentStep.id - 1].name], { relativeTo: this.route })
-    this.currentStep = this.steps[this.currentStep.id - 1]
+    this.router.navigate([this.steps[this.buildCvService.currentStep.id - 1].name], { relativeTo: this.route })
   }
 }

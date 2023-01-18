@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import { BuildCvService } from '../../services/build-cv.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-personal-info',
@@ -8,13 +10,17 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PersonalInfoComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private buildCvService: BuildCvService
+    ) {}
 
   ngOnInit(): void {
     this.route.url.subscribe(value => {
-      value.forEach((val) => {
-        console.log(val.path)
-      })
+      this.buildCvService.currentStep = this.buildCvService.getStepByName(value[0].path)
     })
+
+    console.log(this.buildCvService.isFirstStep)
+    console.log(this.buildCvService.canBack)
   }
 }

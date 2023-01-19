@@ -13,17 +13,10 @@ export class BuildCvService {
   constructor() { }
 
   get isFirstStep(): boolean {
-    if (this.currentStep.name === STEPS[0].name) {
+    if (this.currentStep.id === STEPS[0].id) {
       return true
     }
     return false
-  }
-
-  get canBack(): boolean {
-    if (this.currentStep.name === STEPS[0].name) {
-      return false
-    }
-    return true
   }
 
   getSteps(): Observable<BuildCvStep> {

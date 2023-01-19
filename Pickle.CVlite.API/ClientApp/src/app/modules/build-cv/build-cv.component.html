@@ -10,7 +10,7 @@
 <router-outlet></router-outlet>
 <form>
   <div class="form-group row mt-2 justify-content-center">
-    <button *ngIf="canBack"
+    <button *ngIf="!(router.url === '/build-cv')"
             type="button"
             class="btn btn-primary col-sm-1 mx-2"
             (click)="gotoBack()"

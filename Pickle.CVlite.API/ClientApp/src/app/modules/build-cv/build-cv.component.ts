@@ -13,35 +13,26 @@ import { STEPS } from './build-cv-steps';
 export class BuildCvComponent implements OnInit{
   steps: BuildCvStep[] = STEPS
   isFirstStep: boolean
-  canBack: boolean
 
   constructor(
           private route: ActivatedRoute,
-          private router: Router,
+          public router: Router,
           private buildCvService: BuildCvService
           ) {}
 
   ngOnInit(): void {
     this.route.url.subscribe((value) => {
-      console.log('path:')
-      console.log(value)
       this.buildCvService.currentStep = this.buildCvService.getStepByName(value[0].path)
-      
-      this.isFirstStep = this.buildCvService.isFirstStep
-      this.canBack = this.buildCvService.canBack
     })
-   
-    console.log('current:')
-    console.log(this.buildCvService.currentStep)
+
+    this.isFirstStep = this.router.url === `/${this.steps[0].name}`
+    
+    console.log(this.isFirstStep)
+    console.log(`/${this.steps[0].name}`)
   }
 
   gotoNext(): void{
-    console.log('current:')
-    console.log(this.buildCvService.currentStep)
     this.router.navigate([this.steps[this.buildCvService.currentStep.id + 1].name], { relativeTo: this.route })
-
-    console.log('current:')
-    console.log(this.buildCvService.currentStep)
   }
 
   gotoBack(): void{

@@ -21,7 +21,6 @@ export class AddressComponent implements OnInit {
     })
 
     console.log(this.buildCvService.isFirstStep)
-    console.log(this.buildCvService.canBack)
   }
 
 }

@@ -13,7 +13,7 @@ export class AddressComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private buildCvService: BuildCvService
-  ) {}
+    ) {}
 
   ngOnInit(): void {
     this.route.url.subscribe(value => {

@@ -4,7 +4,3 @@ export interface BuildCvStep{
   title: string
   family: string
 }
-
-export interface Personal{
-  
-}

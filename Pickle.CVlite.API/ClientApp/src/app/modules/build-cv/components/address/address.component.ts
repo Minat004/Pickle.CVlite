@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BuildCvService } from '../../services/build-cv.service';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'app-address',
@@ -21,6 +20,7 @@ export class AddressComponent implements OnInit {
     })
 
     console.log(this.buildCvService.isFirstStep)
+    console.log(this.buildCvService.currentStep)
   }
 
 }

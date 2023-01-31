@@ -26,8 +26,9 @@ export class BuildCvComponent implements OnInit{
     })
 
     this.isFirstStep = this.router.url === `/${this.steps[0].name}`
-    
+
     console.log(this.isFirstStep)
+    console.log(this.buildCvService.currentStep)
     console.log(`/${this.steps[0].name}`)
   }
 
@@ -36,6 +37,12 @@ export class BuildCvComponent implements OnInit{
   }
 
   gotoBack(): void{
-    this.router.navigate([this.steps[this.buildCvService.currentStep.id - 1].name], { relativeTo: this.route })
+    if (this.buildCvService.currentStep.name === this.steps[1].name){
+      this.router.navigate(['./'], {relativeTo: this.route})
+      this.buildCvService.currentStep = this.steps[0]
+    }
+    else {
+      this.router.navigate([this.steps[this.buildCvService.currentStep.id - 1].name], { relativeTo: this.route })
+    }
   }
 }

@@ -21,5 +21,6 @@ export class PersonalInfoComponent implements OnInit {
     })
 
     console.log(this.buildCvService.isFirstStep)
+    console.log(this.buildCvService.currentStep)
   }
 }

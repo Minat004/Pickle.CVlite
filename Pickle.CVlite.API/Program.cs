@@ -1,6 +1,11 @@
+using Pickle.CVlite.API.Models.DbSettings;
+using Pickle.CVlite.API.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<ResumeStoreDatabaseSettings>(builder.Configuration.GetSection("ResumeDatabase"));
+builder.Services.AddSingleton<ResumesService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

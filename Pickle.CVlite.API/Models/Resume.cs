@@ -8,7 +8,7 @@ public class Resume
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
-    
+
     [BsonElement("personalDetail")]
     public PersonalDetail PersonalDetail { get; set; }
     

@@ -5,10 +5,10 @@ namespace Pickle.CVlite.API.Models;
 public class Education
 {
     [BsonElement("school")]
-    public string School { get; set; }
+    public string? School { get; set; }
     
     [BsonElement("degree")]
-    public string Degree { get; set; }
+    public string? Degree { get; set; }
     
     [BsonElement("startDate")]
     public DateTime StartDate { get; set; }
@@ -17,7 +17,7 @@ public class Education
     public DateTime EndDate { get; set; }
     
     [BsonElement("city")]
-    public string City { get; set; }
+    public string? City { get; set; }
     
     [BsonElement("description")]
     public string? Description { get; set; }

@@ -18,6 +18,9 @@ public class ResumeController : ControllerBase
     [HttpGet]
     public async Task<List<Resume>> Get() => await _resumesService.GetAsync();
 
+    [HttpGet("{id:length(24)}")]
+    public async Task<Resume?> Get(string id) => await _resumesService.GetAsync(id);
+
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Resume resume)
     {

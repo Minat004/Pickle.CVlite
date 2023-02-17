@@ -5,8 +5,8 @@ namespace Pickle.CVlite.API.Models;
 public class Rating
 {
     [BsonElement("name")]
-    public string Name { get; set; }
-    
+    public string? Name { get; set; }
+
     [BsonElement("level")]
-    public string Level { get; set; }
+    public string? Level { get; set; }
 }

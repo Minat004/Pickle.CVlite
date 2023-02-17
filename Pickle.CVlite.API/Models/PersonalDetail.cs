@@ -5,37 +5,37 @@ namespace Pickle.CVlite.API.Models;
 public class PersonalDetail
 {
     [BsonElement("jobTitle")]
-    public string JobTitle { get; set; } = string.Empty;
-    
+    public string? JobTitle { get; set; }
+
     [BsonElement("photo")]
-    public string Photo { get; set; }
-    
+    public string? Photo { get; set; }
+
     [BsonElement("firstName")]
-    public string FirstName { get; set; }
-    
+    public string FirstName { get; set; } = string.Empty;
+
     [BsonElement("lastName")]
-    public string LastNAme { get; set; }
-    
+    public string LastNAme { get; set; } = string.Empty;
+
     [BsonElement("email")]
-    public string Email { get; set; }
-    
+    public string Email { get; set; } = string.Empty;
+
     [BsonElement("phone")]
-    public string Phone { get; set; }
+    public string Phone { get; set; } = string.Empty;
     
     [BsonElement("country")]
-    public string Country { get; set; }
+    public string? Country { get; set; }
     
     [BsonElement("city")]
-    public string City { get; set; }
+    public string? City { get; set; }
     
     [BsonElement("street")]
-    public string Street { get; set; }
+    public string? Street { get; set; }
     
     [BsonElement("postCode")]
-    public string PostCode { get; set; }
+    public string? PostCode { get; set; }
     
     [BsonElement("nationality")]
-    public string Nationality { get; set; }
+    public string? Nationality { get; set; }
     
     [BsonElement("dateOfBirth")]
     public DateTime DateOfBirth { get; set; }

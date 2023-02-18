@@ -10,6 +10,7 @@
         <PackageReference Include="MongoDB.Bson" Version="2.19.0" />
         <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Adobe.PDFServicesSDK" Version="2.2.1" />
     </ItemGroup>
 
     <ItemGroup>

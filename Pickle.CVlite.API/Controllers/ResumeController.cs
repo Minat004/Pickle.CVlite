@@ -9,10 +9,12 @@ namespace Pickle.CVlite.API.Controllers;
 public class ResumeController : ControllerBase
 {
     private readonly ResumesService _resumesService;
+    private readonly PdfService _pdfService;
     
-    public ResumeController(ResumesService resumesService)
+    public ResumeController(ResumesService resumesService, PdfService pdfService)
     {
         _resumesService = resumesService;
+        _pdfService = pdfService;
     }
 
     [HttpGet]
@@ -25,6 +27,7 @@ public class ResumeController : ControllerBase
     public async Task<IActionResult> Post([FromBody] Resume resume)
     {
         await _resumesService.CreateAsync(resume);
+        await _pdfService.CreatePdfFromHtml();
         return CreatedAtAction(nameof(Get), new { id = resume.Id }, resume);
     }
 

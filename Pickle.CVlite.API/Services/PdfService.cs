@@ -10,12 +10,12 @@ namespace Pickle.CVlite.API.Services;
 
 public class PdfService
 {
-    public async Task CreatePdfFromHtml(string pathToHtml = @"input.html")
+    public async Task CreatePdfFromHtml(string pathToHtml = @"/Assets/Input/input.html")
     {
         try
         {
             Credentials credentials = Credentials.ServiceAccountCredentialsBuilder()
-                .FromFile(Directory.GetCurrentDirectory() + "/pdfservices-api-credentials.json")
+                .FromFile(Directory.GetCurrentDirectory() + @"/pdfservices-api-credentials.json")
                 .Build();
 
             var executionContext = ExecutionContext.Create(credentials);
@@ -28,7 +28,7 @@ public class PdfService
 
             var result = await Task.Run(() => htmlToPdfOperation.Execute(executionContext));
 
-            await Task.Run(() => result.SaveAs(Directory.GetCurrentDirectory() + "/output/output.pdf"));
+            await Task.Run(() => result.SaveAs(Directory.GetCurrentDirectory() + @"/output/output.pdf"));
         }
         catch (ServiceUsageException serviceUsageException)
         {

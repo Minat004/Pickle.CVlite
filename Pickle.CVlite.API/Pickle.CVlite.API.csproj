@@ -17,4 +17,13 @@
       <Folder Include="ClientApp\src\app\modules" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Update="pdfservices-api-credentials.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="private.key">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
 </Project>

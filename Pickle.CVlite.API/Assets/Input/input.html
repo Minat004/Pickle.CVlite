@@ -4,59 +4,106 @@
     <meta charset="UTF-8">
     <title>Resume</title>
     <style>
-        body{
+        body {
             font-family: "Roboto Light", sans-serif;
         }
-        .container-top{
+
+        .container-top {
             background-color: aquamarine;
             padding: 10px;
             width: 1000px;
             margin-inline: auto;
             margin-bottom: 10px;
         }
-        .container-flex{
+
+        .container-flex {
             display: flex;
             flex-direction: row;
             width: 1020px;
             margin: auto;
         }
-        .container-flex div{
+
+        .container-flex div {
             background-color: aliceblue;
             padding: 10px;
+        }
+        
+        .container-left {
+            width: 400px;
+            margin-right: 10px;
+        }
+        
+        .container-right {
+            width: fit-content;
+        }
+        
+        .personal-details {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .hobby {
+            margin-bottom: 0;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <div class="container-top">
-        <div style="margin-bottom: 40px">
-            <h2>Oleksandr Belskyi</h2>
-            <h3>Junior C# Developer</h3>
-        </div>
-        <div>
-            <p>Gorzow Wielkopolski, 66-400, Poland</p>
-            <p>+48578364303, umi0n3@gmail.com</p>
-        </div>
+<div class="container-top">
+    <div style="margin-bottom: 40px">
+        <h2>Oleksandr Belskyi</h2>
+        <h3>Junior C# Developer</h3>
     </div>
-    <div class="container-flex">
-        <div style="width: 400px; margin-right: 10px">
-            <p><strong>Date of birth</strong></p>
-            <p>20-01-1991</p>
-            <p><strong>Nationality</strong></p>
-            <p>Ukrainian</p>
-            <p><strong>Driving license</strong></p>
-            <p>UDT WJO II-III</p>
-        </div>
-        <div style="width: fit-content">
-            <h2>Profile</h2>
-            <p>
-                I have started learning programming some time ago. Currently I am working on Python, TypeScript, C# .NET 
-                Core and Angular 15. Still, I am open to other programming languages. I work on two projects, at the same
-                time. The first project is the light and modern file manager using the Avalonia UI (WPF) cross-platform 
-                framework. The second one is the full stack application for generate/create CV, using Angular 15 for 
-                front-end, ASP.NET Core WEB API for back-end and using MongoDB like database.
-            </p>
-            <h2>Employment History</h2>
-        </div>
+    <div>
+        <p>Gorzow Wielkopolski, 66-400, Poland</p>
+        <p>+48578364303, umi0n3@gmail.com</p>
     </div>
+</div>
+<div class="container-flex">
+    <div class="container-left">
+        <p class="personal-details">
+            <strong>Date of birth</strong>
+            <br>20-01-1991
+        </p>
+        <p class="personal-details">
+            <strong>Nationality</strong>
+            <br>Ukrainian
+        </p>
+        <p class="personal-details">
+            <strong>Driving license</strong>
+            <br>UDT WJO II-III
+        </p>
+        <p class="personal-details">
+            <strong>Skills</strong>
+            <br>Python
+            <br>TypeScript
+            <br>C# .NET Core
+            <br>Angular 15
+        </p>
+        <p class="personal-details">
+            <strong>Hobbies</strong>
+            <br>
+            Talking about hobbies, I definitely keen in sports. I enjoy playing football and skiing.
+            Also, I have some bike rides from time to time.
+        </p>
+        <p class="personal-details">
+            <strong>Languages</strong>
+            <br>English
+            <br>Ukrainian
+            <br>Polish
+        </p>
+    </div>
+    <div class="container-right">
+        <h2>Profile</h2>
+        <p>
+            I have started learning programming some time ago. Currently I am working on Python, TypeScript, C# .NET
+            Core and Angular 15. Still, I am open to other programming languages. I work on two projects, at the same
+            time. The first project is the light and modern file manager using the Avalonia UI (WPF) cross-platform
+            framework. The second one is the full stack application for generate/create CV, using Angular 15 for
+            front-end, ASP.NET Core WEB API for back-end and using MongoDB like database.
+        </p>
+        <h2>Employment History</h2>
+    </div>
+</div>
 </body>
 </html>

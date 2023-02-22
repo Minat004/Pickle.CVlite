@@ -5,11 +5,11 @@ using Pickle.CVlite.API.Models.DbSettings;
 
 namespace Pickle.CVlite.API.Services;
 
-public class ResumesService
+public class ResumeService
 {
     private readonly IMongoCollection<Resume> _collection;
 
-    public ResumesService(IOptions<ResumeStoreDatabaseSettings> resumeStoreDbSettings)
+    public ResumeService(IOptions<ResumeStoreDatabaseSettings> resumeStoreDbSettings)
     {
         var mongoClient = new MongoClient(resumeStoreDbSettings.Value.ConnectionString);
 
@@ -17,7 +17,7 @@ public class ResumesService
 
         _collection = mongoDataBase.GetCollection<Resume>(resumeStoreDbSettings.Value.CollectionName);
     }
-    
+
     public async Task<List<Resume>> GetAsync() =>
         await _collection.Find(_ => true).ToListAsync();
 

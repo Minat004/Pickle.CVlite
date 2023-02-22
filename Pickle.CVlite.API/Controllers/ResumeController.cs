@@ -8,25 +8,25 @@ namespace Pickle.CVlite.API.Controllers;
 [Route("api/[controller]")]
 public class ResumeController : ControllerBase
 {
-    private readonly ResumesService _resumesService;
+    private readonly ResumeService _resumeService;
     private readonly PdfService _pdfService;
     
-    public ResumeController(ResumesService resumesService, PdfService pdfService)
+    public ResumeController(ResumeService resumeService, PdfService pdfService)
     {
-        _resumesService = resumesService;
+        _resumeService = resumeService;
         _pdfService = pdfService;
     }
 
     [HttpGet]
-    public async Task<List<Resume>> Get() => await _resumesService.GetAsync();
+    public async Task<List<Resume>> Get() => await _resumeService.GetAsync();
 
     [HttpGet("{id:length(24)}")]
-    public async Task<Resume?> Get(string id) => await _resumesService.GetAsync(id);
+    public async Task<Resume?> Get(string id) => await _resumeService.GetAsync(id);
 
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Resume resume)
     {
-        await _resumesService.CreateAsync(resume);
+        await _resumeService.CreateAsync(resume);
         await _pdfService.CreatePdfFromHtml();
         return CreatedAtAction(nameof(Get), new { id = resume.Id }, resume);
     }
@@ -34,7 +34,7 @@ public class ResumeController : ControllerBase
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, Resume updatedResume)
     {
-        var resume = await _resumesService.GetAsync(id);
+        var resume = await _resumeService.GetAsync(id);
 
         if (resume is null)
         {
@@ -43,7 +43,7 @@ public class ResumeController : ControllerBase
 
         updatedResume.Id = resume.Id;
 
-        await _resumesService.UpdateAsync(id, updatedResume);
+        await _resumeService.UpdateAsync(id, updatedResume);
 
         return NoContent();
     }
@@ -51,14 +51,14 @@ public class ResumeController : ControllerBase
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var resume = await _resumesService.GetAsync(id);
+        var resume = await _resumeService.GetAsync(id);
 
         if (resume is null)
         {
             return NotFound();
         }
 
-        await _resumesService.RemoveAsync(id);
+        await _resumeService.RemoveAsync(id);
 
         return NoContent();
     }

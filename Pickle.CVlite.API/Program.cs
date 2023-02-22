@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<ResumeStoreDatabaseSettings>(builder.Configuration.GetSection("ResumeDatabase"));
-builder.Services.AddSingleton<ResumesService>();
+builder.Services.AddSingleton<ResumeService>();
 builder.Services.AddSingleton<PdfService>();
 
 builder.Services.AddControllers();

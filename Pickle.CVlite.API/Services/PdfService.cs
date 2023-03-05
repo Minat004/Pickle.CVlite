@@ -31,12 +31,15 @@ public class PdfService
 
             var result = await Task.Run(() => htmlToPdfOperation.Execute(executionContext));
 
-            if (File.Exists(Directory.GetCurrentDirectory() + Output))
+            await Task.Run(() =>
             {
-                File.Delete(Directory.GetCurrentDirectory() + Output);
-            }
-            
-            await Task.Run(() => result.SaveAs(Directory.GetCurrentDirectory() + Output));
+                if (File.Exists(Directory.GetCurrentDirectory() + Output))
+                {
+                    File.Delete(Directory.GetCurrentDirectory() + Output);
+                }
+                
+                result.SaveAs(Directory.GetCurrentDirectory() + Output);
+            });
         }
         catch (ServiceUsageException serviceUsageException)
         {

@@ -10,7 +10,10 @@ namespace Pickle.CVlite.API.Services;
 
 public class PdfService
 {
-    public async Task CreatePdfFromHtml(string pathToHtml = @"/Assets/Input/input.html")
+    private const string Input = @"./Assets/Input/input.html";
+    private const string Output = @"/Assets/Output/output.pdf";
+
+    public async Task CreatePdfFromHtml(string pathToHtml = Input)
     {
         try
         {
@@ -28,7 +31,12 @@ public class PdfService
 
             var result = await Task.Run(() => htmlToPdfOperation.Execute(executionContext));
 
-            await Task.Run(() => result.SaveAs(Directory.GetCurrentDirectory() + @"/output/output.pdf"));
+            if (File.Exists(Directory.GetCurrentDirectory() + Output))
+            {
+                File.Delete(Directory.GetCurrentDirectory() + Output);
+            }
+            
+            await Task.Run(() => result.SaveAs(Directory.GetCurrentDirectory() + Output));
         }
         catch (ServiceUsageException serviceUsageException)
         {

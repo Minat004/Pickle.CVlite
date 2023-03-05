@@ -22,19 +22,18 @@
             width: 1020px;
             margin: auto;
         }
-
-        .container-flex div {
-            background-color: aliceblue;
-            padding: 10px;
-        }
         
         .container-left {
             width: 400px;
             margin-right: 10px;
+            background-color: aliceblue;
+            padding: 10px;
         }
         
         .container-right {
             width: fit-content;
+            background-color: aliceblue;
+            padding: 10px;
         }
         
         .personal-details {
@@ -42,9 +41,16 @@
             line-height: 1.7;
         }
         
-        .hobby {
-            margin-bottom: 0;
-            line-height: 1.5;
+        .profile {
+        }
+
+        .employment-history {
+        }
+
+        .one-more {
+        }
+
+        .education {
         }
     </style>
 </head>
@@ -94,15 +100,144 @@
         </p>
     </div>
     <div class="container-right">
-        <h2>Profile</h2>
-        <p>
-            I have started learning programming some time ago. Currently I am working on Python, TypeScript, C# .NET
-            Core and Angular 15. Still, I am open to other programming languages. I work on two projects, at the same
-            time. The first project is the light and modern file manager using the Avalonia UI (WPF) cross-platform
-            framework. The second one is the full stack application for generate/create CV, using Angular 15 for
-            front-end, ASP.NET Core WEB API for back-end and using MongoDB like database.
-        </p>
-        <h2>Employment History</h2>
+        <div class="profile">
+            <h2>Profile</h2>
+            <p>
+                I have started learning programming some time ago. Currently I am working on Python, TypeScript, C# .NET
+                Core and Angular 15. Still, I am open to other programming languages. I work on two projects, at the same
+                time. The first project is the light and modern file manager using the Avalonia UI (WPF) cross-platform
+                framework. The second one is the full stack application for generate/create CV, using Angular 15 for
+                front-end, ASP.NET Core WEB API for back-end and using MongoDB like database.
+            </p>
+        </div>
+        
+        <div class="employment-history">
+            <h2>Employment History</h2>
+            <div class="one-more">
+                <h3>Intern junior Python/C# developer, Xopero One, Gorzów Wielkopolski</h3>
+                <p>May 2023 - August 2023</p>
+                <ul>
+                    <li>
+                        in the beginning of the internship I was doing and finished successfully tasks like Tic-Tac-Toe,
+                        BlackJack, phone book (PySimpleGUI)
+                    </li>
+                    <li>
+                        I was offered to study C# programming language
+                    </li>
+                    <li>
+                        my first task on C# was app (MVVM, WPF) for office recruiter: add, edit, delete, search 
+                        employer (name, contract, salary...)
+                    </li>
+                    <li>
+                        I was working on existing project (Git Protect). Optimize data in LiteDB, and remake endpoint
+                        which starts back up. Moreover I was additionally working with GitHub Actions. For example,
+                        after every commit repository back up starts (execute endpoint)
+                    </li>
+                </ul>
+            </div>
+            <div class="one-more">
+                <h3>Shift test specialist, TPV Displays Polska, Gorzów Wielkopolski</h3>
+                <p>September 2022 - February 2023</p>
+                <ul>
+                    <li>
+                        I got promoted from warehouseman
+                    </li>
+                    <li>
+                        assistance directly on the TV testing line during an accident of automatic testing stations
+                    </li>
+                    <li>
+                        analysis of problems for repeatability
+                    </li>
+                    <li>
+                        testing and deployment new software for TV
+                    </li>
+                    <li>
+                        service and repair of computers at automatic stations directly on the line
+                    </li>
+                </ul>
+            </div>
+            <div class="one-more">
+                <h3>Warehouseman, TPV Displays Polska, Gorzów Wielkopolski</h3>
+                <p>August 2017 - August 2021</p>
+                <ul>
+                    <li>
+                        maintenance of WMS, SAP
+                    </li>
+                    <li>
+                        I was promoted to the leader of the department in several months
+                    </li>
+                    <li>
+                        in 2020 I received UDT WJO II-III License
+                    </li>
+                </ul>
+            </div>
+            <div class="one-more">
+                <h3>Content manager, VIVA, Ternopil</h3>
+                <p>September 2015 - May 2016</p>
+                <ul>
+                    <li>
+                        adding products to the online store
+                    </li>
+                    <li>
+                        parsing using the parser Content Downloader X1
+                    </li>
+                </ul>
+            </div>
+            <div class="one-more">
+                <h3>Graphical designer, WEST, Ternopil</h3>
+                <p>February 2014 - August 2015</p>
+                <ul>
+                    <li>
+                        development of printing design and its preparation for printing
+                    </li>
+                    <li>
+                        design and advertisement of banners
+                    </li>
+                    <li>
+                        site organization
+                    </li>
+                    <li>
+                        assistance in the implementation of native advertising and further service
+                    </li>
+                    <li>
+                        maintenance of all computers at the company
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="education">
+            <div class="one-more">
+                <h3>Teacher and specialist of computer science, Ternopil National Pedagogical University, Ternopil</h3>
+                <p>September 2008 - July 2014</p>
+                <ul>
+                    <li>
+                        studied at Faculty of Physics and Mathematics
+                    </li>
+                    <li>
+                        studied applied mathematics for the first five years
+                    </li>
+                    <li>
+                        at the master's degree, i received the qualification of a teacher of computer science, physics,
+                        and mathematics
+                    </li>
+                    <li>
+                        the topic of my master's thesis was the development of an application for Android phones
+                    </li>
+                </ul>
+            </div>
+            <div class="one-more">
+                <h3>High school, Ternopil Pedagogical Liceum, Ternopil</h3>
+                <p>September 2006 - July 2008</p>
+                <ul>
+                    <li>
+                        entered after medium school
+                    </li>
+                    <li>
+                        studied at Faculty of Physics and Mathematics
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 </body>

@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<ResumeStoreDatabaseSettings>(builder.Configuration.GetSection("ResumeDatabase"));
 builder.Services.AddSingleton<ResumeService>();
 builder.Services.AddSingleton<PdfService>();
+builder.Services.AddSingleton<RazorRenderService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

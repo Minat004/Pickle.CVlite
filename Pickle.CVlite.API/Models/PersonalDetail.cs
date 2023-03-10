@@ -14,7 +14,7 @@ public class PersonalDetail
     public string FirstName { get; set; } = string.Empty;
 
     [BsonElement("lastName")]
-    public string LastNAme { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
 
     [BsonElement("email")]
     public string Email { get; set; } = string.Empty;

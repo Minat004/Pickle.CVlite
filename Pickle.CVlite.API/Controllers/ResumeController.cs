@@ -10,18 +10,28 @@ public class ResumeController : ControllerBase
 {
     private readonly ResumeService _resumeService;
     private readonly PdfService _pdfService;
+    private readonly RazorRenderService _razorRenderService;
     
-    public ResumeController(ResumeService resumeService, PdfService pdfService)
+    public ResumeController(
+        ResumeService resumeService,
+        PdfService pdfService,
+        RazorRenderService razorRenderService
+        )
     {
         _resumeService = resumeService;
         _pdfService = pdfService;
+        _razorRenderService = razorRenderService;
     }
 
     [HttpGet]
     public async Task<List<Resume>> Get() => await _resumeService.GetAsync();
 
     [HttpGet("{id:length(24)}")]
-    public async Task<Resume?> Get(string id) => await _resumeService.GetAsync(id);
+    public async Task<Resume?> Get(string id)
+    {
+        _razorRenderService.GenerateHtml();
+        return await _resumeService.GetAsync(id);
+    }
 
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Resume resume)

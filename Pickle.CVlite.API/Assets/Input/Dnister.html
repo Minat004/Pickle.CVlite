@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dnister</title>
+    <style>
+        body {
+            font-family: "Roboto Light", sans-serif;
+        }
+        
+        .cv-header {
+            display: flex;
+            flex-direction: row;
+            width: 1160px;
+            height: 300px;
+            background-color: #eff5e7;
+            margin: auto auto 10px;
+        }
+        
+        .cv-body {
+            display: flex;
+            flex-direction: row;
+            width: 1160px;
+            margin: auto;
+        }
+        
+        .container-left {
+            flex-shrink: 0;
+            width: 300px;
+            margin-right: 10px;
+        }
+        
+        .container-right {
+            width: 100%;
+        }
+        
+        p.full-name {
+            font-size: 60px;
+            margin: 20px 0 10px 20px;
+        }
+        
+        p.job-title {
+            font-size: 30px;
+            margin: 0 0 0 20px;
+        }
+        
+        p.address {
+            font-size: 20px;
+            margin: 0 0 20px 20px;
+            line-height: 150%;
+        }
+        
+        div.personal-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .title-right {
+            margin: 0 0 5px 0;
+            padding: 5px;
+            font-size: 30px;
+        }
+        
+        .title-left {
+            margin: 0 0 5px 0;
+            padding: 5px;
+            font-size: 20px;
+        }
+        
+        p.title-description {
+            margin: 0 0 20px 10px; 
+            padding: 5px;
+            font-size: 20px;
+        }
+        
+        div.gradient-left {
+            background-image: linear-gradient(to left, white, #eff5e7);
+        }
+        
+        div.gradient-right {
+            background-image: linear-gradient(to right, white, #eff5e7);
+        }
+        
+        ul.rating {
+            margin: 0 0 20px 10px;
+            padding: 5px;
+            list-style-position: inside;
+            font-size: 20px;
+        }
+        
+        ul.history-list {
+            margin: 0 0 20px 30px;
+            padding: 5px;
+            list-style-position: outside;
+            font-size: 20px;
+        }
+
+        p.title-history {
+            margin: 0 0 5px 10px;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        p.gap-data {
+            margin: 0 0 5px 10px;
+            padding: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="cv-header">
+    <img src="../Images/image.JPG" alt="avatar">
+    <div class="personal-info">
+        <div>
+            <p class="full-name"><strong>Oleksandr Belskyi</strong></p>
+            <p class="job-title">Junior C# Developer</p>
+        </div>
+        <p class="address">
+            Gorzow Wielkopolski, 66-400, Poland
+            <br>+48578364303, umi0n3@gmail.com
+        </p>
+    </div>
+</div>
+<div class="cv-body">
+    <div class="container-left">
+        <div class="title-left gradient-left">
+            <strong>Date of birth</strong>
+        </div>
+        <p class="title-description">02-01-1991</p>
+        <div class="title-left gradient-left">
+            <strong>Nationality</strong>
+        </div>
+        <p class="title-description">Ukrainian</p>
+        <div class="title-left gradient-left">
+            <strong>Driving license</strong>
+        </div>
+        <p class="title-description">UDT WJO II-III</p>
+        <div class="title-left gradient-left">
+            <strong>Skills</strong>
+        </div>
+        <ul class="rating">
+            <li>Python</li>
+            <li>TypeScript</li>
+            <li>C# .NET Core</li>
+            <li>Angular 15</li>
+        </ul>
+        <div class="title-left gradient-left">
+            <strong>Hobbies</strong>
+        </div>
+        <p class="title-description">
+            Talking about hobbies, I definitely keen in sports. I enjoy playing football and skiing.
+            Also, I have some bike rides from time to time.
+        </p>
+        <div class="title-left gradient-left">
+            <strong>Languages</strong>
+        </div>
+        <ul class="rating">
+            <li>English</li>
+            <li>Ukrainian</li>
+            <li>Polish</li>
+        </ul>
+    </div>
+    <div class="container-right">
+        <div class="title-right gradient-right">
+            <strong>Profile</strong>
+        </div>
+        <p class="title-description">
+            I have started learning programming some time ago. Currently I am working on Python, TypeScript, C# .NET
+            Core and Angular 15. Still, I am open to other programming languages. I work on two projects, at the same
+            time. The first project is the light and modern file manager using the Avalonia UI (WPF) cross-platform
+            framework. The second one is the full stack application for generate/create CV, using Angular 15 for
+            front-end, ASP.NET Core WEB API for back-end and using MongoDB like database.
+        </p>
+        <div class="title-right gradient-right">
+            <strong>Employment history</strong>
+        </div>
+        <p class="title-history">
+            Intern junior Python/C# developer, Xopero One, Gorzów Wielkopolski
+        </p>
+        <p class="gap-data">May 2023 - August 2023</p>
+        <ul class="history-list">
+            <li>
+                in the beginning of the internship I was doing and finished successfully tasks like Tic-Tac-Toe,
+                BlackJack, phone book (PySimpleGUI)
+            </li>
+            <li>
+                I was offered to study C# programming language
+            </li>
+            <li>
+                my first task on C# was app (MVVM, WPF) for office recruiter: add, edit, delete, search
+                employer (name, contract, salary...)
+            </li>
+            <li>
+                I was working on existing project (Git Protect). Optimize data in LiteDB, and remake endpoint
+                which starts back up. Moreover I was additionally working with GitHub Actions. For example,
+                after every commit repository back up starts (execute endpoint)
+            </li>
+        </ul>
+        <p class="title-history">
+            Shift test specialist, TPV Displays Polska, Gorzów Wielkopolski
+        </p>
+        <p class="gap-data">September 2022 - February 2023</p>
+        <ul class="history-list">
+            <li>
+                I got promoted from warehouseman
+            </li>
+            <li>
+                assistance directly on the TV testing line during an accident of automatic testing stations
+            </li>
+            <li>
+                analysis of problems for repeatability
+            </li>
+            <li>
+                testing and deployment new software for TV
+            </li>
+            <li>
+                service and repair of computers at automatic stations directly on the line
+            </li>
+        </ul>
+        <p class="title-history">
+            Warehouseman, TPV Displays Polska, Gorzów Wielkopolski
+        </p>
+        <p class="gap-data">August 2017 - August 2021</p>
+        <ul class="history-list">
+            <li>
+                maintenance of WMS, SAP
+            </li>
+            <li>
+                I was promoted to the leader of the department in several months
+            </li>
+            <li>
+                in 2020 I received UDT WJO II-III License
+            </li>
+        </ul>
+        <p class="title-history">
+            Content manager, VIVA, Ternopil
+        </p>
+        <p class="gap-data">September 2015 - May 2016</p>
+        <ul class="history-list">
+            <li>
+                adding products to the online store
+            </li>
+            <li>
+                parsing using the parser Content Downloader X1
+            </li>
+        </ul>
+        <p class="title-history">
+            Graphical designer, WEST, Ternopil
+        </p>
+        <p class="gap-data">February 2014 - August 2015</p>
+        <ul class="history-list">
+            <li>
+                development of printing design and its preparation for printing
+            </li>
+            <li>
+                design and advertisement of banners
+            </li>
+            <li>
+                site organization
+            </li>
+            <li>
+                assistance in the implementation of native advertising and further service
+            </li>
+            <li>
+                maintenance of all computers at the company
+            </li>
+        </ul>
+        <div class="title-right gradient-right">
+            <strong>Education</strong>
+        </div>
+        <p class="title-history">
+            Teacher and specialist of computer science, Ternopil National Pedagogical University, Ternopil
+        </p>
+        <p class="gap-data">September 2008 - July 2014</p>
+        <ul class="history-list">
+            <li>
+                studied at Faculty of Physics and Mathematics
+            </li>
+            <li>
+                studied applied mathematics for the first five years
+            </li>
+            <li>
+                at the master's degree, i received the qualification of a teacher of computer science, physics,
+                and mathematics
+            </li>
+            <li>
+                the topic of my master's thesis was the development of an application for Android phones
+            </li>
+        </ul>
+        <p class="title-history">
+            High school, Ternopil Pedagogical Liceum, Ternopil
+        </p>
+        <p class="gap-data">September 2006 - July 2008</p>
+        <ul class="history-list">
+            <li>
+                entered after medium school
+            </li>
+            <li>
+                studied at Faculty of Physics and Mathematics
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

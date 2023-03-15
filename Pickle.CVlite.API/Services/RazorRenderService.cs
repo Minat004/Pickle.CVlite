@@ -5,8 +5,8 @@ namespace Pickle.CVlite.API.Services;
 
 public class RazorRenderService
 {
-    private const string Input = @"./Assets/Input/inputRazor.cshtml";
-    private const string Output = @"/Assets/Output/outputRazor.html";
+    private const string Input = @"./Assets/Input/DnisterRazor.cshtml";
+    private const string Output = @"/Assets/Output/Dnister.html";
 
     private readonly ResumeService _resumeService;
 

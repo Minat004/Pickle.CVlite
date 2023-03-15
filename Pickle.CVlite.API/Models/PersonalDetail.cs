@@ -40,4 +40,7 @@ public class PersonalDetail
     [BsonElement("dateOfBirth")]
     public DateTime DateOfBirth { get; set; }
     
+    [BsonElement("drivingLicense")]
+    public string? DrivingLicense { get; set; }
+    
 }

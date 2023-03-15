@@ -11,9 +11,11 @@ public class Resume
 
     [BsonElement("personalDetail")]
     public PersonalDetail PersonalDetail { get; set; }
+
+    public string? ProFile { get; set; }
     
     [BsonElement("employmentHistories")]
-    public List<EmploymentHistory> EmploymentHistories { get; set; }
+    public List<EmploymentHistory>? EmploymentHistories { get; set; }
     
     [BsonElement("educations")]
     public List<Education> Educations { get; set; }

@@ -20,5 +20,5 @@ public class Education
     public string? City { get; set; }
     
     [BsonElement("description")]
-    public string? Description { get; set; }
+    public List<string>? Description { get; set; }
 }

@@ -1,0 +1,231 @@
+@model Pickle.CVlite.API.Models.Resume
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dnister</title>
+    <style>
+        body {
+            font-family: "Roboto Light", sans-serif;
+        }
+        
+        .cv-header {
+            display: flex;
+            flex-direction: row;
+            width: 1160px;
+            height: 300px;
+            background-color: #eff5e7;
+            margin: auto auto 10px;
+        }
+        
+        .cv-body {
+            display: flex;
+            flex-direction: row;
+            width: 1160px;
+            margin: auto;
+        }
+        
+        .container-left {
+            flex-shrink: 0;
+            width: 300px;
+            margin-right: 10px;
+        }
+        
+        .container-right {
+            width: 100%;
+        }
+        
+        p.full-name {
+            font-size: 60px;
+            margin: 20px 0 10px 20px;
+        }
+        
+        p.job-title {
+            font-size: 30px;
+            margin: 0 0 0 20px;
+        }
+        
+        p.address {
+            font-size: 20px;
+            margin: 0 0 20px 20px;
+            line-height: 150%;
+        }
+        
+        div.personal-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .title-right {
+            margin: 0 0 5px 0;
+            padding: 5px;
+            font-size: 30px;
+        }
+        
+        .title-left {
+            margin: 0 0 5px 0;
+            padding: 5px;
+            font-size: 20px;
+        }
+        
+        p.title-description {
+            margin: 0 0 20px 10px; 
+            padding: 5px;
+            font-size: 20px;
+        }
+        
+        div.gradient-left {
+            background-image: linear-gradient(to left, white, #eff5e7);
+        }
+        
+        div.gradient-right {
+            background-image: linear-gradient(to right, white, #eff5e7);
+        }
+        
+        ul.rating {
+            margin: 0 0 20px 10px;
+            padding: 5px;
+            list-style-position: inside;
+            font-size: 20px;
+        }
+        
+        ul.history-list {
+            margin: 0 0 20px 30px;
+            padding: 5px;
+            list-style-position: outside;
+            font-size: 20px;
+        }
+
+        p.title-history {
+            margin: 0 0 5px 10px;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        p.gap-data {
+            margin: 0 0 5px 10px;
+            padding: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="cv-header">
+    <img src="../Images/image.JPG" alt="avatar">
+    <div class="personal-info">
+        <div>
+            <p class="full-name"><strong>@Model.PersonalDetail.FirstName @Model.PersonalDetail.LastName</strong></p>
+            <p class="job-title">@Model.PersonalDetail.JobTitle</p>
+        </div>
+        <p class="address">
+            @Model.PersonalDetail.City, @Model.PersonalDetail.PostCode, @Model.PersonalDetail.Country
+            <br>@Model.PersonalDetail.Phone, @Model.PersonalDetail.Email
+        </p>
+    </div>
+</div>
+<div class="cv-body">
+    <div class="container-left">
+        <div class="title-left gradient-left">
+            <strong>Date of birth</strong>
+        </div>
+        <p class="title-description">@Model.PersonalDetail.DateOfBirth.Date</p>
+        <div class="title-left gradient-left">
+            <strong>Nationality</strong>
+        </div>
+        <p class="title-description">@Model.PersonalDetail.Nationality</p>
+        
+        @if (Model.PersonalDetail.DrivingLicense != null)
+        {
+            <div class="title-left gradient-left">
+                <strong>Driving license</strong>
+            </div>
+            <p class="title-description">@Model.PersonalDetail.DrivingLicense</p>
+        }
+        
+        <div class="title-left gradient-left">
+            <strong>Skills</strong>
+        </div>
+        <ul class="rating">
+            
+            @foreach (var skill in Model.Skills)
+            {
+                <li>@skill.Name</li>
+            }
+            
+        </ul>
+        <div class="title-left gradient-left">
+            <strong>Hobbies</strong>
+        </div>
+        <p class="title-description">
+            @Model.Hobbies
+        </p>
+        <div class="title-left gradient-left">
+            <strong>Languages</strong>
+        </div>
+        <ul class="rating">
+            
+            @foreach (var language in Model.Languages)
+            {
+                <li>@language.Name</li>
+            }
+        </ul>
+    </div>
+    <div class="container-right">
+        
+        @if (Model.ProFile != null)
+        {
+            <div class="title-right gradient-right">
+                <strong>Profile</strong>
+            </div>
+            <p class="title-description">
+                @Model.ProFile
+            </p>
+        }
+        
+        <div class="title-right gradient-right">
+            <strong>Employment history</strong>
+        </div>
+        
+        @foreach (var employmentHistory in Model.EmploymentHistories!)
+        {
+            <p class="title-history">
+                @employmentHistory.JobTitle, @employmentHistory.Employer, @employmentHistory.City
+            </p>
+            <p class="gap-data">@employmentHistory.StartDate.Date - @employmentHistory.EndDate.Date</p>
+            <ul class="history-list">
+                
+                @foreach (var description in employmentHistory.Description!)
+                {
+                    <li>@description</li>
+                }
+                
+            </ul>                                                                                       
+        }
+        
+        <div class="title-right gradient-right">
+            <strong>Education</strong>
+        </div>
+        
+        @foreach (var education in Model.Educations)
+        {
+            <p class="title-history">
+                @education.Degree, @education.School, @education.City
+            </p>
+            <p class="gap-data">@education.StartDate.Date - @education.EndDate.Date</p>
+            <ul class="history-list">
+                
+                @foreach (var description in education.Description!)
+                {
+                    <li>@description</li>
+                }
+                
+            </ul>
+        }
+        
+    </div>
+</div>
+</body>
+</html>

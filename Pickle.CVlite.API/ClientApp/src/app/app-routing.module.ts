@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from "./components/home/home.component";
-import {CreateCvComponent} from "./components/create-cv/create-cv.component";
-import {PersonalInfoComponent} from "./components/personal-info/personal-info.component";
-import {AddressComponent} from "./components/address/address.component";
+import { HomeComponent } from "./components/home/home.component";
+import { ErrorComponent } from "./components/error/error.component";
 
 const routes: Routes = [
   {
@@ -11,18 +9,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'create-cv',
-    component: CreateCvComponent,
-    children: [
-      {
-        path: 'personal-info',
-        component: PersonalInfoComponent,
-      },
-      {
-        path: 'address',
-        component: AddressComponent,
-      },
-    ],
+    path: '**',
+    component: ErrorComponent,
   },
 ];
 

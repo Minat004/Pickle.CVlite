@@ -1,0 +1,21 @@
+<ul class="list-group list-group-horizontal justify-content-center mt-2">
+  <li *ngFor="let step of steps" class="list-group-item">{{ step.title }}</li>
+</ul>
+
+<h2 class="my-2 text-center"
+    *ngIf="router.url === '/' + this.steps[0].name"
+>Start build your CV</h2>
+<router-outlet></router-outlet>
+<form>
+  <div class="form-group row mt-2 justify-content-center">
+    <button *ngIf="!(router.url === '/' + this.steps[0].name)"
+            type="button"
+            class="btn btn-primary col-sm-1 mx-2"
+            (click)="gotoBack()"
+    >Back</button>
+    <button type="button"
+            class="btn btn-outline-primary col-sm-1"
+            (click)="gotoNext()"
+    >Next</button>
+  </div>
+</form>

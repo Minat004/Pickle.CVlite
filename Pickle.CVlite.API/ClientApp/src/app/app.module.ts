@@ -10,6 +10,7 @@ import { BuildCvModule } from './modules/build-cv/build-cv.module';
 import { ErrorComponent } from './components/error/error.component';
 import { BuildCvService } from "./modules/build-cv/services/build-cv.service";
 import { HttpClientModule } from "@angular/common/http";
+import { BuilderComponent } from './components/builder/builder.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from "@angular/common/http";
     HomeComponent,
     BuildCvComponent,
     ErrorComponent,
+    BuilderComponent,
   ],
   imports: [
     BrowserModule,
